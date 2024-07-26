@@ -1,0 +1,26 @@
+{
+    "files.associations": {
+        "genesis.h": "c",
+        "font.h": "c",
+        "types.h": "c",
+        "resources.h": "c",
+        "limits": "cpp",
+        "stdlib.h": "c",
+        "tiles.h": "c",
+        "sprites.h": "c",
+        "floor.h": "c",
+        "type_traits": "c",
+        "cmath": "c",
+        "map.h": "c",
+        "camera.h": "c",
+        "global.h": "c",
+        "levelgenerator.h": "c",
+        "player.h": "c",
+        "mob.h": "c",
+        "levels.h": "c",
+        "stdio.h": "c",
+        "sstream": "c",
+        "interactions.h": "c",
+        "mobmanager.h": "c"
+    }
+}
