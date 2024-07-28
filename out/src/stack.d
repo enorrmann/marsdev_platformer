@@ -1,4 +1,4 @@
-out/src/player.o: src/player.c inc/player.h \
+out/src/stack.o: src/stack.c inc/stack.h \
  /opt/toolchains/mars/m68k-elf/inc/genesis.h \
  /opt/toolchains/mars/m68k-elf/inc/types.h \
  /opt/toolchains/mars/m68k-elf/inc/config.h \
@@ -51,6 +51,6 @@ out/src/player.o: src/player.c inc/player.h \
  /opt/toolchains/mars/m68k-elf/inc/config.h \
  /opt/toolchains/mars/m68k-elf/inc/string.h \
  /opt/toolchains/mars/m68k-elf/inc/maths.h \
- /opt/toolchains/mars/m68k-elf/inc/dma.h inc/physics.h inc/xtypes.h \
- inc/camera.h inc/levels.h inc/global.h inc/levelgenerator.h inc/map.h \
- inc/mob.h inc/bullet.h res/resources.h
+ /opt/toolchains/mars/m68k-elf/inc/dma.h inc/player.h inc/physics.h \
+ inc/xtypes.h inc/camera.h inc/levels.h inc/global.h inc/levelgenerator.h \
+ inc/map.h

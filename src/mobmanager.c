@@ -35,15 +35,8 @@ void spawnMobs()
 	{
 
 		s16 xDistance = abs(playerBody.globalPosition.x - spawnPoints[i]->position.x);
-		/*debug(playerBody.globalPosition.x, "globalPosition.x", 1);
-		debug(playerBody.globalPosition.y, "globalPosition.y", 2);
-		debug(spawnPoints[0]->position.x, "spawnPoint.x", 3);
-		debug(xDistance, "xDistance", 4);*/
 		if (xDistance < 100 && !spawnPoints[i]->spawned)
 		{
-			// mobs[i]->globalPosition.x = spawnPoints[i]->position.x;
-			// mobs[i]->globalPosition.y = spawnPoints[i]->position.y;
-
 			spawnUnusedMobAt(spawnPoints[i]);
 		}
 	}
@@ -69,7 +62,6 @@ void updateMobs()
 		{
 			hitMob(mobs[i]);
 		}
-		// debug(colision, "colision", i + 1);
 	}
 }
 

@@ -21,6 +21,9 @@
         "stdio.h": "c",
         "sstream": "c",
         "interactions.h": "c",
-        "mobmanager.h": "c"
-    }
+        "mobmanager.h": "c",
+        "bullet.h": "c",
+        "stack.h": "c"
+    },
+    "CodeGPT.apiKey": "Ollama"
 }

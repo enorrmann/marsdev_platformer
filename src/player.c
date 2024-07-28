@@ -3,6 +3,7 @@
 #include "global.h"
 #include "map.h"
 #include "mob.h"
+#include "bullet.h"
 
 #include "resources.h"
 
@@ -90,11 +91,17 @@ void playerInputChanged()
 			playerBody.input.x = 0;
 		}
 
+			if (changed & BUTTON_A)
+			{
+				BULLET_fire(&playerBody);
+			}
+
 		// Jump button via jumpbuffer
 		// Also used to stop climbing the stairs
-		if (changed & (BUTTON_A | BUTTON_B | BUTTON_C))
+		if (changed & (BUTTON_B | BUTTON_C))
 		{
-			if (state & (BUTTON_A | BUTTON_B | BUTTON_C))
+
+			if (state & ( BUTTON_B | BUTTON_C))
 			{
 				if (playerBody.climbingStair)
 				{
@@ -110,7 +117,7 @@ void playerInputChanged()
 					playerBody.velocity.fixY = FIX16(-doubleJumpSpeed);
 					canDoubleJump = FALSE;
 					// Play double jump SFX (using the same sound for now)
-					//XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
+					// XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
 				}
 			}
 			else if (playerBody.jumping && playerBody.velocity.fixY < 0)

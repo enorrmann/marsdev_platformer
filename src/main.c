@@ -36,6 +36,7 @@ int main(bool resetType) {
 		spawnMobs();
 		updateMobs();
 		updateCamera();
+		BULLET_update();
 
 		//Then we update sprites and after that we tell the Mega Drive that we have finished processing all the frame data
 		SPR_update();

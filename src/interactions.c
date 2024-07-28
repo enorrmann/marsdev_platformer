@@ -11,6 +11,11 @@ bool checkAABBIntersection(const struct pBody *body1, struct pBody *body2)
         return FALSE;
     }
 
+    if (body1->dead || body2->dead)
+    {
+        return FALSE;
+    }
+
     // Calcular la distancia absoluta en el eje X entre las posiciones globales
     s16 xDistance = abs(body1->globalPosition.x - body2->globalPosition.x);
 
