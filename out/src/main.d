@@ -52,4 +52,5 @@ out/src/main.o: src/main.c /opt/toolchains/mars/m68k-elf/inc/genesis.h \
  /opt/toolchains/mars/m68k-elf/inc/maths.h \
  /opt/toolchains/mars/m68k-elf/inc/dma.h inc/levels.h inc/global.h \
  inc/physics.h inc/xtypes.h inc/camera.h inc/player.h \
- inc/levelgenerator.h inc/map.h inc/mob.h inc/mobmanager.h inc/dev.h
+ inc/levelgenerator.h inc/map.h inc/mob.h inc/mobmanager.h \
+ inc/interactions.h inc/dev.h

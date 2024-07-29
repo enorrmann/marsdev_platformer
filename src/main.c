@@ -5,6 +5,7 @@
 #include "player.h"
 #include "mob.h"
 #include "mobmanager.h"
+#include "interactions.h"
 #include "dev.h"
 
 void inGameJoyEvent(u16 joy, u16 changed, u16 state);
@@ -37,6 +38,7 @@ int main(bool resetType) {
 		updateMobs();
 		updateCamera();
 		BULLET_update();
+		checkHitMobs();
 
 		//Then we update sprites and after that we tell the Mega Drive that we have finished processing all the frame data
 		SPR_update();

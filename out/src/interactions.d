@@ -53,4 +53,5 @@ out/src/interactions.o: src/interactions.c \
  /opt/toolchains/mars/m68k-elf/inc/maths.h \
  /opt/toolchains/mars/m68k-elf/inc/dma.h inc/player.h inc/physics.h \
  inc/xtypes.h inc/camera.h inc/levels.h inc/global.h inc/levelgenerator.h \
- inc/map.h
+ inc/map.h inc/mobmanager.h inc/bullet.h res/resources.h \
+ inc/interactions.h

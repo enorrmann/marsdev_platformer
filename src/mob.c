@@ -14,10 +14,9 @@ Vect2D_s16 mobStartPos = {0, 0};
 void updateMobAnimations(struct pBody *mobBody);
 void checkMobCollisions(struct pBody *mobBody);
 
-
 void mobInit(struct pBody *mobBody)
 {
-	
+
 	mobBody->input.x = 1;
 
 	// Create the sprite and palette for the player
@@ -44,6 +43,7 @@ void mobInit(struct pBody *mobBody)
 	mobBody->climbingStair = FALSE;
 	mobBody->active = FALSE;
 	mobBody->dead = TRUE;
+	mobBody->hp = 2;
 
 	mobStartPos.x += 30;
 }
@@ -89,6 +89,10 @@ void updateMob(struct pBody *mobBody)
 
 	if (!mobBody->active || mobBody->dead)
 	{
+		if (mobBody->position.x > 0)
+		{
+			SPR_setPosition(mobBody->sprite, 0, 0);
+		}
 		return;
 	}
 

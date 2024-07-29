@@ -2,6 +2,11 @@
 
 #include <genesis.h>
 #include "player.h"
+#include "mobmanager.h"
+#include "bullet.h"
+#include "interactions.h"
+
+#define X_MARGIN 32 // Margen en píxeles para la verificación inicial en X, ajusta según sea necesario
 
 bool checkAABBIntersection(const struct pBody *body1, struct pBody *body2)
 {
@@ -25,7 +30,7 @@ bool checkAABBIntersection(const struct pBody *body1, struct pBody *body2)
     {
         body2->active = FALSE;
         SPR_setPosition(body2->sprite, 0, 0);
-        return;
+        return FALSE;
     }
     else
     {
@@ -53,4 +58,57 @@ bool checkAABBIntersection(const struct pBody *body1, struct pBody *body2)
 
     // Hay intersección si se cumple en ambos ejes
     return intersectX && intersectY;
+}
+
+
+
+bool checkHitMobs()
+{
+    Vect2D_s16 bulletGlobalPosition;
+    for (int i = 0; i < MAX_BULLETS; i++)
+    {
+        if (bullets[i].active)
+        {
+            bulletGlobalPosition.x = bullets[i].position.x+cameraPosition.x;
+            bulletGlobalPosition.y = bullets[i].position.y+cameraPosition.y;
+            for (int j = 0; j < MAX_NUM_MOBS; j++)
+            {
+                if (mobs[j]->active && !mobs[j]->dead)
+                {
+                    // Verificación inicial rápida en X
+                //    if (abs(bulletGlobalPosition.x - mobs[j]->globalPosition.x) <= X_MARGIN)
+                  //  {
+                        // Verificación completa de colisión
+                        
+                        if (bulletGlobalPosition.x >= mobs[j]->globalAABB.min.x &&
+                            bulletGlobalPosition.x <= mobs[j]->globalAABB.max.x 
+                            //&& bullets[i].position.y >= mobs[j]->aabb.min.y &&                            bullets[i].position.y <= mobs[j]->aabb.max.y
+                            )
+                        {
+                            debug(1,"colision",2);
+                            // Colisión detectada
+                            bullets[i].active = FALSE; // Desactivar la bala
+                            //mobs[j]->hp--;             // Reducir la vida del mob
+
+                          //  if (mobs[j]->hp <= 0)
+                           // {
+                                mobs[j]->dead = TRUE;
+                                mobs[j]->active = FALSE;
+                         //   }
+
+                            return TRUE; // Retornar verdadero si se detectó una colisión
+                        } else {
+                            debug(0,"colision",2);
+                        }
+                        debug(bullets[i].position.x,"bullets[i].position.x",3);
+                        debug(mobs[j]->globalAABB.min.x,"mobs[j]->globalAABB.min.x",4);
+                        debug(mobs[j]->aabb.min.x,"mobs[j]->aabb.min.x",5);
+                        debug(cameraPosition.x,"cameraPosition.x",6);
+                        
+                  //  }
+                }
+            }
+        }
+    }
+    return FALSE; // Retornar falso si no se detectó ninguna colisión
 }

@@ -2,7 +2,6 @@
 #include "bullet.h"
 #include "resources.h"
 
-#define MAX_BULLETS 120
 #define FIRE_DELAY 5
 
 bool initialized = FALSE;
@@ -10,14 +9,14 @@ s16 cameraOffset = 0;
 
 struct Bullet bullets[MAX_BULLETS + 1];
 struct Bullet *getUnusedBullet();
-int fire_timer = 0;
+int fire_timer = FIRE_DELAY;
 
 void BULLET_init()
 {
 	struct Bullet _bullet;
 	for (int i = 0; i < MAX_BULLETS; i++)
 	{
-		bullets[i].sprite = SPR_addSprite(&bullet_sprite, levelStartPos.x, levelStartPos.y, TILE_ATTR(PLAYER_PALETTE, FALSE, FALSE, FALSE));
+		bullets[i].sprite = SPR_addSprite(&bullet_sprite, 0, 0, TILE_ATTR(PLAYER_PALETTE, FALSE, FALSE, FALSE));
 		bullets[i].speed = 6;
 		bullets[i].active = FALSE;
 	}
@@ -40,6 +39,7 @@ void BULLET_fire(struct pBody *shooter)
 	if (b != NULL)
 	{
 		b->position = shooter->position;
+		b->direction.x = shooter->facingDirection;
 		fire_timer = FIRE_DELAY;
 	}
 
@@ -58,17 +58,21 @@ void BULLET_update()
 	{
 		if (!bullets[i].active)
 		{
+			if (bullets[i].position.x > 0)
+			{
+				SPR_setPosition(bullets[i].sprite, 0, 0);
+			}
 			continue;
 		}
-		s16 xDistance = abs(playerBody.position.x - bullets[i].position.x);
-		if (xDistance > 300)
+		// screen bounds
+		if (bullets[i].position.x < -10 || bullets[i].position.x > 320)
 		{
 			bullets[i].active = FALSE;
 			SPR_setPosition(bullets[i].sprite, 0, 0);
 		}
 		else
 		{
-			bullets[i].position.x = bullets[i].position.x + bullets[i].speed - (cameraPosition.x - cameraOffset);
+			bullets[i].position.x = bullets[i].position.x + (bullets[i].speed * bullets[i].direction.x) - (cameraPosition.x - cameraOffset);
 			SPR_setPosition(bullets[i].sprite, bullets[i].position.x, bullets[i].position.y);
 		}
 	}

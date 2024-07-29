@@ -9,7 +9,7 @@
 #include "resources.h"
 #include "interactions.h"
 
-#define MAX_NUM_MOBS 3
+
 #define NUM_SPAWN_POINTS 2
 
 struct pBody *mobs[MAX_NUM_MOBS + 1];
@@ -57,10 +57,12 @@ void updateMobs()
 	for (int i = 0; i < MAX_NUM_MOBS; i++)
 	{
 		updateMob(mobs[i]);
-		int colision = checkAABBIntersection(&playerBody, mobs[i]);
+		bool colision = checkAABBIntersection(&playerBody, mobs[i]);
 		if (colision)
 		{
-			hitMob(mobs[i]);
+			//hitMob(mobs[i]);
+			// reset, un mob tocó al player 1
+			SYS_reset();
 		}
 	}
 }

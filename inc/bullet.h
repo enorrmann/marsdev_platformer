@@ -9,6 +9,8 @@
 #include "levelgenerator.h"
 #include "player.h"
 
+#define MAX_BULLETS 10
+
 struct Bullet
 {
     Sprite *sprite;
@@ -18,6 +20,8 @@ struct Bullet
     int speed;
     bool active;
 };
+
+extern struct Bullet bullets[MAX_BULLETS + 1];
 
 void BULLET_fire(struct pBody *shooter);
 
