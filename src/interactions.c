@@ -60,55 +60,45 @@ bool checkAABBIntersection(const struct pBody *body1, struct pBody *body2)
     return intersectX && intersectY;
 }
 
-
-
-bool checkHitMobs()
+void checkHitMobs()
 {
     Vect2D_s16 bulletGlobalPosition;
+
+    // todo chequear solo active bullets y no el max_bullets posible
     for (int i = 0; i < MAX_BULLETS; i++)
     {
         if (bullets[i].active)
         {
-            bulletGlobalPosition.x = bullets[i].position.x+cameraPosition.x;
-            bulletGlobalPosition.y = bullets[i].position.y+cameraPosition.y;
+            bulletGlobalPosition.x = bullets[i].position.x + cameraPosition.x+4; // +4 center th bulet hitbox
+            bulletGlobalPosition.y = bullets[i].position.y + cameraPosition.y+4;
             for (int j = 0; j < MAX_NUM_MOBS; j++)
             {
+                debug(mobs[j]->dead, "mobs[j]->dead", j);
                 if (mobs[j]->active && !mobs[j]->dead)
                 {
                     // Verificación inicial rápida en X
-                //    if (abs(bulletGlobalPosition.x - mobs[j]->globalPosition.x) <= X_MARGIN)
-                  //  {
-                        // Verificación completa de colisión
-                        
-                        if (bulletGlobalPosition.x >= mobs[j]->globalAABB.min.x &&
-                            bulletGlobalPosition.x <= mobs[j]->globalAABB.max.x 
-                            //&& bullets[i].position.y >= mobs[j]->aabb.min.y &&                            bullets[i].position.y <= mobs[j]->aabb.max.y
-                            )
-                        {
-                            debug(1,"colision",2);
-                            // Colisión detectada
-                            bullets[i].active = FALSE; // Desactivar la bala
-                            //mobs[j]->hp--;             // Reducir la vida del mob
+                    //    if (abs(bulletGlobalPosition.x - mobs[j]->globalPosition.x) <= X_MARGIN)
+                    //  {
+                    // Verificación completa de colisión
 
-                          //  if (mobs[j]->hp <= 0)
-                           // {
-                                mobs[j]->dead = TRUE;
-                                mobs[j]->active = FALSE;
-                         //   }
-
-                            return TRUE; // Retornar verdadero si se detectó una colisión
-                        } else {
-                            debug(0,"colision",2);
-                        }
-                        debug(bullets[i].position.x,"bullets[i].position.x",3);
-                        debug(mobs[j]->globalAABB.min.x,"mobs[j]->globalAABB.min.x",4);
-                        debug(mobs[j]->aabb.min.x,"mobs[j]->aabb.min.x",5);
-                        debug(cameraPosition.x,"cameraPosition.x",6);
+                    if (bulletGlobalPosition.x >= mobs[j]->globalAABB.min.x &&
+                        bulletGlobalPosition.x <= mobs[j]->globalAABB.max.x && 
+                        bulletGlobalPosition.y >= mobs[j]->globalAABB.min.y &&
+                        bulletGlobalPosition.y <= mobs[j]->globalAABB.max.y)
+                    {
+                     /*   debug(j, "j", 2);
+                        debug(mobs[j]->hp, "mobs[j]->hp", 3);
+                        debug(bullets[i].active, "bullets[i].active", 4);*/
                         
-                  //  }
+                        // Colisión detectada
+
+                        bullets[i].active = FALSE; // Desactivar la bala
+                        hitMob(mobs[j]);
+                    }
+
+                    //  }
                 }
             }
         }
     }
-    return FALSE; // Retornar falso si no se detectó ninguna colisión
 }

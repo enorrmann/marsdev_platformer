@@ -39,6 +39,8 @@ void BULLET_fire(struct pBody *shooter)
 	if (b != NULL)
 	{
 		b->position = shooter->position;
+		b->position.x +=shooter->centerOffset.x;
+		b->position.y +=shooter->centerOffset.y;
 		b->direction.x = shooter->facingDirection;
 		fire_timer = FIRE_DELAY;
 	}

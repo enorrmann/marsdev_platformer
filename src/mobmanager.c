@@ -14,7 +14,7 @@
 
 struct pBody *mobs[MAX_NUM_MOBS + 1];
 struct SpawnPoint *spawnPoints[NUM_SPAWN_POINTS + 1];
-void hitMob(struct pBody *mobBody);
+
 void initSpawnPoints()
 {
 	spawnPoints[0] = (struct SpawnPoint *)malloc(sizeof(struct SpawnPoint));
@@ -48,6 +48,7 @@ void mobsInit()
 	for (int i = 0; i < MAX_NUM_MOBS; i++)
 	{
 		mobs[i] = (struct pBody *)malloc(sizeof(struct pBody));
+		mobs[i]->numero = i;
 		mobInit(mobs[i]);
 	}
 }
@@ -73,6 +74,7 @@ void spawnUnusedMobAt(struct SpawnPoint *spawnPoint)
 	{
 		if (mobs[i]->dead)
 		{
+			mobs[i]->hp = mobs[i]->initialHp;
 			mobs[i]->globalPosition.x = spawnPoint->position.x;
 			mobs[i]->globalPosition.y = spawnPoint->position.y;
 
@@ -82,12 +84,4 @@ void spawnUnusedMobAt(struct SpawnPoint *spawnPoint)
 			return;
 		}
 	}
-}
-void hitMob(struct pBody *mobBody)
-{
-	mobBody->dead = TRUE;
-	mobBody->active = FALSE;
-	mobBody->globalPosition.x = 0;
-	mobBody->globalPosition.y = 0;
-	SPR_setPosition(mobBody->sprite, 0, 0);
 }

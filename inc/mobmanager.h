@@ -8,7 +8,7 @@
 #include "levelgenerator.h"
 #include "player.h"
 
-#define MAX_NUM_MOBS 3
+#define MAX_NUM_MOBS 1
 typedef struct SpawnPoint
 {
     Vect2D_s16 position;

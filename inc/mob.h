@@ -10,4 +10,4 @@
 
 void mobInit(struct pBody *body);
 void updateMob(struct pBody *body);
-
+void hitMob(struct pBody *mobBody);

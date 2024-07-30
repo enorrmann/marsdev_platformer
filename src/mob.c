@@ -43,7 +43,8 @@ void mobInit(struct pBody *mobBody)
 	mobBody->climbingStair = FALSE;
 	mobBody->active = FALSE;
 	mobBody->dead = TRUE;
-	mobBody->hp = 2;
+	mobBody->initialHp = 2;
+	mobBody->hp = mobBody->initialHp;
 
 	mobStartPos.x += 30;
 }
@@ -336,4 +337,20 @@ void checkMobCollisions(struct pBody *mobBody)
 	}
 	// This time we don't need to update the playerBounds as they will be updated at the beginning of the function the next frame
 	mobBody->globalAABB = playerBounds; // para no calcularlo nuevamente en interactions.c
+}
+
+void hitMob(struct pBody *mobBody)
+{
+		debug(mobBody->numero, "hit numero", 7);
+	mobBody->hp--; // Reducir la vida del mob
+	if (mobBody->hp <= 0)
+	{
+		mobBody->dead = TRUE;
+		mobBody->active = FALSE;
+
+		mobBody->globalPosition.x = 0;
+		mobBody->globalPosition.y = 0;
+		SPR_setPosition(mobBody->sprite, 0, 0);
+
+	}
 }

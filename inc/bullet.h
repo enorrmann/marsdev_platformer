@@ -9,7 +9,7 @@
 #include "levelgenerator.h"
 #include "player.h"
 
-#define MAX_BULLETS 10
+#define MAX_BULLETS 1
 
 struct Bullet
 {

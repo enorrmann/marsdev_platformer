@@ -20,7 +20,7 @@ s16 currentJumpBufferTime;
 bool collidingAgainstStair;
 bool runningAnim;
 
-u16 dyingSteps;
+u16 dyingSteps = 0;
 const u16 dieDelay = 10;
 
 const u16 oneWayPlatformErrorCorrection = 5;
@@ -510,7 +510,7 @@ void checkCollisions()
 	}
 	if (levelLimits.max.y <= playerBounds.max.y)
 	{
-		if (levelLimits.max.y == 768)
+		if (levelLimits.max.y == MAP_HEIGHT_PX)
 		{
 			playerBody.falling = TRUE;
 		}

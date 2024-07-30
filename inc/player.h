@@ -45,7 +45,9 @@ struct pBody {
 	}velocity;
 
 	Vect2D_s16 input;
-	u16 hp;
+	s16 hp;
+	s16 initialHp;
+	int numero;
 };
 
 extern struct pBody playerBody;
