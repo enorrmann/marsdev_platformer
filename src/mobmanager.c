@@ -9,33 +9,49 @@
 #include "resources.h"
 #include "interactions.h"
 
+#define NUM_SPAWN_POINTS 6
 
-#define NUM_SPAWN_POINTS 2
-
+int spawned = 0;
 struct pBody *mobs[MAX_NUM_MOBS + 1];
 struct SpawnPoint *spawnPoints[NUM_SPAWN_POINTS + 1];
 
 void initSpawnPoints()
 {
-	spawnPoints[0] = (struct SpawnPoint *)malloc(sizeof(struct SpawnPoint));
-	spawnPoints[1] = (struct SpawnPoint *)malloc(sizeof(struct SpawnPoint));
-	spawnPoints[0]->position.x = 200;
-	spawnPoints[0]->position.y = 120;
-	spawnPoints[0]->mobPBody = NULL;
-	spawnPoints[0]->spawned = FALSE;
-	spawnPoints[1]->position.x = 500;
-	spawnPoints[1]->position.y = 168;
-	spawnPoints[1]->mobPBody = NULL;
-	spawnPoints[1]->spawned = FALSE;
+	for (int y = 0; y < MAP_HEIGHT; y++)
+	{
+		for (int x = 0; x < MAP_WIDTH; x++)
+		{
+			if (collisionMap[y][x] == 8)
+			{
+
+				if (spawned < NUM_SPAWN_POINTS)
+				{
+					// debug(x * 16, "x", 1);
+					// debug(y * 16 - 15, "y", 2);
+					spawnPoints[spawned] = (struct SpawnPoint *)malloc(sizeof(struct SpawnPoint));
+					spawnPoints[spawned]->position.x = x * 16;
+					spawnPoints[spawned]->position.y = y * 16 - 15;
+					spawnPoints[spawned]->mobPBody = NULL;
+					spawnPoints[spawned]->spawned = FALSE;
+
+					spawned++;
+
+				}
+			}
+		}
+	}
 }
 
 void spawnMobs()
 {
 	for (int i = 0; i < NUM_SPAWN_POINTS; i++)
 	{
-
+		if (spawnPoints[i]->spawned)
+		{
+			continue;
+		}
 		s16 xDistance = abs(playerBody.globalPosition.x - spawnPoints[i]->position.x);
-		if (xDistance < 100 && !spawnPoints[i]->spawned)
+		if (xDistance < 100)
 		{
 			spawnUnusedMobAt(spawnPoints[i]);
 		}
@@ -61,8 +77,8 @@ void updateMobs()
 		bool colision = checkAABBIntersection(&playerBody, mobs[i]);
 		if (colision)
 		{
-			//hitMob(mobs[i]);
-			// reset, un mob tocó al player 1
+			// hitMob(mobs[i]);
+			//  reset, un mob tocó al player 1
 			SYS_reset();
 		}
 	}

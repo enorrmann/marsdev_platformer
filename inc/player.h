@@ -52,6 +52,8 @@ struct pBody {
 
 extern struct pBody playerBody;
 
+# define NEW_PLAYER_AABB newAABB(8, 23, 10, 31);
+
 void playerInputChanged();
 void playerInit();
 void updatePlayer();

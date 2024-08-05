@@ -2,7 +2,7 @@
 #include "bullet.h"
 #include "resources.h"
 
-#define FIRE_DELAY 5
+
 
 bool initialized = FALSE;
 s16 cameraOffset = 0;
@@ -39,8 +39,10 @@ void BULLET_fire(struct pBody *shooter)
 	if (b != NULL)
 	{
 		b->position = shooter->position;
-		b->position.x +=shooter->centerOffset.x;
-		b->position.y +=shooter->centerOffset.y;
+		//b->position.x +=shooter->centerOffset.x;
+		b->position.x += 5;
+		b->position.y += 14;
+		//b->position.y +=shooter->centerOffset.y;
 		b->direction.x = shooter->facingDirection;
 		fire_timer = FIRE_DELAY;
 	}

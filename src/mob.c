@@ -20,14 +20,14 @@ void mobInit(struct pBody *mobBody)
 	mobBody->input.x = 1;
 
 	// Create the sprite and palette for the player
-	mobBody->sprite = SPR_addSprite(&player_sprite, mobStartPos.x, mobStartPos.y, TILE_ATTR(PLAYER_PALETTE, FALSE, FALSE, FALSE));
-	PAL_setPalette(PLAYER_PALETTE, player_sprite.palette->data, DMA);
+	mobBody->sprite = SPR_addSprite(&mob_sprite, mobStartPos.x, mobStartPos.y, TILE_ATTR(PLAYER_PALETTE, FALSE, FALSE, FALSE));
+	//PAL_setPalette(PLAYER_PALETTE, player_sprite.palette->data, DMA);
 
 	// Set the global position of the player, the local position will be updated once we are in the main loop
 	mobBody->globalPosition = mobStartPos;
 
 	// We set collider size of the player
-	mobBody->aabb = newAABB(4, 20, 4, 24);
+	mobBody->aabb = NEW_PLAYER_AABB
 
 	// Default movement values
 	mobBody->speed = 1;
@@ -54,12 +54,12 @@ void updateMobAnimations(struct pBody *mobBody)
 	// Sprite flip depending on the horizontal input
 	if (mobBody->velocity.x > 0)
 	{
-		SPR_setHFlip(mobBody->sprite, TRUE);
+		SPR_setHFlip(mobBody->sprite, FALSE);
 		mobBody->facingDirection = 1;
 	}
 	else if (mobBody->velocity.x < 0)
 	{
-		SPR_setHFlip(mobBody->sprite, FALSE);
+		SPR_setHFlip(mobBody->sprite, TRUE);
 		mobBody->facingDirection = -1;
 	}
 
@@ -341,7 +341,7 @@ void checkMobCollisions(struct pBody *mobBody)
 
 void hitMob(struct pBody *mobBody)
 {
-		debug(mobBody->numero, "hit numero", 7);
+		//debug(mobBody->numero, "hit numero", 7);
 	mobBody->hp--; // Reducir la vida del mob
 	if (mobBody->hp <= 0)
 	{

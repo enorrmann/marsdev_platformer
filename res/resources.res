@@ -1,7 +1,9 @@
 # 3 * 8 = 24 -> Size of the sprite
-SPRITE  player_sprite          "images/player.png"          3 3   FAST 5
-SPRITE bullet_sprite "images/bullet_8x8.png"        1 1 NONE 0
-#SPRITE  player_sprite_2          "images/player_2.png"          4 4   FAST 5
+#SPRITE  player_sprite          "images/player.png"          3 3   FAST 5
+SPRITE  player_sprite          "images/rabbit_gun_run.png"          4 4  FAST 5
+SPRITE  mob_sprite          "images/mobs.png"          4 4  FAST 5
+SPRITE bullet_sprite "images/bullet.png"        2 2 NONE 0
+
 
 TILESET level_tileset          "images/level.png"           FAST ALL
 MAP     level_map              "images/level.png"           level_tileset FAST 0

@@ -42,7 +42,8 @@ void playerInit()
 	playerBody.globalPosition = levelStartPos;
 
 	// We set collider size of the player
-	playerBody.aabb = newAABB(4, 20, 4, 24);
+	//playerBody.aabb = newAABB(4, 20, 4, 24);
+	playerBody.aabb = NEW_PLAYER_AABB
 
 	// This collider is thinner because if the width is >=16 it could interfere with the lateral walls
 	playerBody.climbingStairAABB = newAABB(8, 20, playerBody.aabb.min.y, playerBody.aabb.max.y);
@@ -117,6 +118,7 @@ void playerInputChanged()
 					playerBody.velocity.fixY = FIX16(-doubleJumpSpeed);
 					canDoubleJump = FALSE;
 					// Play double jump SFX (using the same sound for now)
+					// PLAY SOUND
 					// XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
 				}
 			}
@@ -280,12 +282,12 @@ void updateAnimations()
 	// Sprite flip depending on the horizontal input
 	if (playerBody.input.x > 0)
 	{
-		SPR_setHFlip(playerBody.sprite, TRUE);
+		SPR_setHFlip(playerBody.sprite, FALSE);
 		playerBody.facingDirection = 1;
 	}
 	else if (playerBody.input.x < 0)
 	{
-		SPR_setHFlip(playerBody.sprite, FALSE);
+		SPR_setHFlip(playerBody.sprite, TRUE);
 		playerBody.facingDirection = -1;
 	}
 

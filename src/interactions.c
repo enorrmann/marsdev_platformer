@@ -69,11 +69,10 @@ void checkHitMobs()
     {
         if (bullets[i].active)
         {
-            bulletGlobalPosition.x = bullets[i].position.x + cameraPosition.x+4; // +4 center th bulet hitbox
-            bulletGlobalPosition.y = bullets[i].position.y + cameraPosition.y+4;
+            bulletGlobalPosition.x = bullets[i].position.x + cameraPosition.x + 4; // +4 center th bulet hitbox
+            bulletGlobalPosition.y = bullets[i].position.y + cameraPosition.y + 4;
             for (int j = 0; j < MAX_NUM_MOBS; j++)
             {
-                debug(mobs[j]->dead, "mobs[j]->dead", j);
                 if (mobs[j]->active && !mobs[j]->dead)
                 {
                     // Verificación inicial rápida en X
@@ -82,14 +81,14 @@ void checkHitMobs()
                     // Verificación completa de colisión
 
                     if (bulletGlobalPosition.x >= mobs[j]->globalAABB.min.x &&
-                        bulletGlobalPosition.x <= mobs[j]->globalAABB.max.x && 
+                        bulletGlobalPosition.x <= mobs[j]->globalAABB.max.x &&
                         bulletGlobalPosition.y >= mobs[j]->globalAABB.min.y &&
                         bulletGlobalPosition.y <= mobs[j]->globalAABB.max.y)
                     {
-                     /*   debug(j, "j", 2);
-                        debug(mobs[j]->hp, "mobs[j]->hp", 3);
-                        debug(bullets[i].active, "bullets[i].active", 4);*/
-                        
+                        /*   debug(j, "j", 2);
+                           debug(mobs[j]->hp, "mobs[j]->hp", 3);
+                           debug(bullets[i].active, "bullets[i].active", 4);*/
+
                         // Colisión detectada
 
                         bullets[i].active = FALSE; // Desactivar la bala
