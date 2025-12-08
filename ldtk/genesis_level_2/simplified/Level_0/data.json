@@ -1,0 +1,64 @@
+{
+	"identifier": "Level_0",
+	"uniqueIdentifer": "c813da70-25d0-11ef-b431-c724daf10267",
+	"x": 0,
+	"y": 512,
+	"width": 768,
+	"height": 256,
+	"bgColor": "#696A79",
+	"neighbourLevels": [],
+	"customFields" : {},
+	"layers": [
+		"Tiles.png",
+		"Background.png",
+		"Mobs.png"
+	],
+	"entities": {
+		"Mob": [
+			{
+				"id": "Mob",
+				"iid": "aa45e270-4ce0-11ef-95c1-5fe81bbb1a4d",
+				"layer": "Entities",
+				"x": 288,
+				"y": 160,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": "2,2,4,5",
+					"Tile": {
+						"tilesetUid": 1,
+						"x": 68,
+						"y": 68,
+						"w": 16,
+						"h": 16
+					}
+				}
+			},
+			{
+				"id": "Mob",
+				"iid": "3c400840-4ce0-11ef-95c1-bd10844773ee",
+				"layer": "Entities",
+				"x": 160,
+				"y": 128,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": {
+						"tilesetUid": 1,
+						"x": 85,
+						"y": 68,
+						"w": 16,
+						"h": 16
+					}
+				}
+			}
+		]
+	}
+}

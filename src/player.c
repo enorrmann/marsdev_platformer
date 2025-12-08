@@ -119,7 +119,7 @@ void playerInputChanged()
 					canDoubleJump = FALSE;
 					// Play double jump SFX (using the same sound for now)
 					// PLAY SOUND
-					// XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
+					 XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
 				}
 			}
 			else if (playerBody.jumping && playerBody.velocity.fixY < 0)
@@ -192,7 +192,7 @@ void updatePlayer()
 	{
 		playerBody.jumping = TRUE;
 		// Play the SFX with the index 64 (jump sfx) with the highest priority
-		// XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); play sound
+		 XGM_startPlayPCM(64, 15, SOUND_PCM_CH1); // play sound
 		playerBody.velocity.fixY = FIX16(-playerBody.jumpSpeed);
 
 		currentCoyoteTime = 0;
