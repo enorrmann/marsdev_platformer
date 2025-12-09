@@ -30,10 +30,10 @@ void mobInit(struct pBody *mobBody)
 	mobBody->aabb = NEW_PLAYER_AABB
 
 	// Default movement values
-	mobBody->speed = 1;
+	mobBody->speed = 0; // 1
 	mobBody->climbingSpeed = 1;
-	mobBody->maxFallSpeed = 6;
-	mobBody->jumpSpeed = 7;
+	mobBody->maxFallSpeed = 0; //6
+	mobBody->jumpSpeed = 0; // 7
 	mobBody->facingDirection = 1;
 	mobBody->acceleration = FIX16(.25);
 	mobBody->deceleration = FIX16(.2);
@@ -46,7 +46,7 @@ void mobInit(struct pBody *mobBody)
 	mobBody->initialHp = 2;
 	mobBody->hp = mobBody->initialHp;
 
-	mobStartPos.x += 30;
+	mobStartPos.x += 30; // why ?
 }
 
 void updateMobAnimations(struct pBody *mobBody)
