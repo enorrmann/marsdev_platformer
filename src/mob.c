@@ -30,10 +30,10 @@ void mobInit(struct pBody *mobBody)
 	mobBody->aabb = NEW_PLAYER_AABB
 
 	// Default movement values
-	mobBody->speed = 0; // 1
+	mobBody->speed = 1;
 	mobBody->climbingSpeed = 1;
-	mobBody->maxFallSpeed = 0; //6
-	mobBody->jumpSpeed = 0; // 7
+	mobBody->maxFallSpeed = 6;
+	mobBody->jumpSpeed = 7;
 	mobBody->facingDirection = 1;
 	mobBody->acceleration = FIX16(.25);
 	mobBody->deceleration = FIX16(.2);
@@ -119,7 +119,7 @@ void updateMob(struct pBody *mobBody)
 	mobBody->velocity.x = clamp(fix16ToInt(mobBody->velocity.fixX), -mobBody->speed, mobBody->speed);
 
 	// Apply gravity with a terminal velocity
-	if (!mobBody->onGround && !mobBody->climbingStair && 0) // dont apply g to mobs
+	if (!mobBody->onGround && !mobBody->climbingStair )
 	{
 		if (fix16ToInt(mobBody->velocity.fixY) <= mobBody->maxFallSpeed)
 		{
