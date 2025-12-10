@@ -46,7 +46,7 @@ void mobInit(struct pBody *mobBody)
 	mobBody->initialHp = 2;
 	mobBody->hp = mobBody->initialHp;
 
-	mobStartPos.x += 30; // why ?
+	//mobStartPos.x += 30; // why ?
 }
 
 void updateMobAnimations(struct pBody *mobBody)
@@ -119,7 +119,7 @@ void updateMob(struct pBody *mobBody)
 	mobBody->velocity.x = clamp(fix16ToInt(mobBody->velocity.fixX), -mobBody->speed, mobBody->speed);
 
 	// Apply gravity with a terminal velocity
-	if (!mobBody->onGround && !mobBody->climbingStair)
+	if (!mobBody->onGround && !mobBody->climbingStair && 0) // dont apply g to mobs
 	{
 		if (fix16ToInt(mobBody->velocity.fixY) <= mobBody->maxFallSpeed)
 		{

@@ -11,7 +11,7 @@
 #include "mob_positions.h"
 
 #define NUM_SPAWN_POINTS 6
-
+#define MOB_SPRITE_SIZE 18
 int spawned = 0;
 struct pBody *mobs[MAX_NUM_MOBS + 1];
 struct SpawnPoint *spawnPoints[NUM_SPAWN_POINTS + 1];
@@ -51,7 +51,7 @@ void initSpawnPoints()
 		// debug(y * 16 - 15, "y", 2);
 		spawnPoints[spawned] = (struct SpawnPoint *)malloc(sizeof(struct SpawnPoint));
 		spawnPoints[spawned]->position.x = mob_positions[i].x;
-		spawnPoints[spawned]->position.y = mob_positions[i].y;
+		spawnPoints[spawned]->position.y = mob_positions[i].y-(MOB_SPRITE_SIZE/2);
 		spawnPoints[spawned]->mobPBody = NULL;
 		spawnPoints[spawned]->spawned = FALSE;
 

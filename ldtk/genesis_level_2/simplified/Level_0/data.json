@@ -39,9 +39,9 @@
 			},
 			{
 				"id": "Mob",
-				"iid": "3c400840-4ce0-11ef-95c1-bd10844773ee",
+				"iid": "9aebf3d0-d380-11f0-ae37-43d979c76dda",
 				"layer": "Entities",
-				"x": 160,
+				"x": 176,
 				"y": 160,
 				"width": 16,
 				"height": 16,
@@ -50,13 +50,39 @@
 					"hp": 2,
 					"sprite": null,
 					"aabb": null,
-					"Tile": {
-						"tilesetUid": 1,
-						"x": 85,
-						"y": 68,
-						"w": 16,
-						"h": 16
-					}
+					"Tile": null
+				}
+			},
+			{
+				"id": "Mob",
+				"iid": "9d4f8650-d380-11f0-ae37-d96bc0d8b7d6",
+				"layer": "Entities",
+				"x": 0,
+				"y": 0,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": null
+				}
+			},
+			{
+				"id": "Mob",
+				"iid": "cafbb970-d380-11f0-ae37-6315aa9874d6",
+				"layer": "Entities",
+				"x": 240,
+				"y": 96,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": null
 				}
 			}
 		]
