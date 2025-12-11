@@ -1,0 +1,68 @@
+{
+	"identifier": "Level_1",
+	"uniqueIdentifer": "7b334a80-d380-11f0-9d25-8d18cfc5dc5b",
+	"x": 624,
+	"y": 1008,
+	"width": 512,
+	"height": 512,
+	"bgColor": "#696A79",
+	"neighbourLevels": [],
+	"customFields" : {},
+	"layers": [
+		"Tiles.png",
+		"Background.png",
+		"Mobs.png"
+	],
+	"entities": {
+		"Mob": [
+			{
+				"id": "Mob",
+				"iid": "bb4df750-d380-11f0-9d25-21d2befbccad",
+				"layer": "Entities",
+				"x": 304,
+				"y": 304,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": null
+				}
+			},
+			{
+				"id": "Mob",
+				"iid": "cec09a90-d380-11f0-9d25-9104cd0a202f",
+				"layer": "Entities",
+				"x": 176,
+				"y": 224,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": null
+				}
+			},
+			{
+				"id": "Mob",
+				"iid": "969b04b0-d380-11f0-9d25-ebbda66fd2ac",
+				"layer": "Entities",
+				"x": 480,
+				"y": 32,
+				"width": 16,
+				"height": 16,
+				"color": 12470831,
+				"customFields": {
+					"hp": 2,
+					"sprite": null,
+					"aabb": null,
+					"Tile": null
+				}
+			}
+		]
+	}
+}

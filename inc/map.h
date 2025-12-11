@@ -1,11 +1,14 @@
 #pragma once
 
 #include <genesis.h>
-#define MAP_WIDTH 48
-#define MAP_WIDTH_PX 768
 
-#define MAP_HEIGHT 16
-#define MAP_HEIGHT_PX 256
+#define TILE_SIZE 16
+
+#define MAP_WIDTH 32 //48
+#define MAP_WIDTH_PX (MAP_WIDTH * TILE_SIZE)
+
+#define MAP_HEIGHT 32 // 16
+#define MAP_HEIGHT_PX (MAP_HEIGHT * TILE_SIZE)
 
 extern const Vect2D_s16 levelStartPos;
 

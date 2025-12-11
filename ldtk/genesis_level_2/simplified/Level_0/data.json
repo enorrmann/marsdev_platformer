@@ -80,22 +80,6 @@
 						"h": 16
 					}
 				}
-			},
-			{
-				"id": "Mob",
-				"iid": "870b9dd0-d380-11f0-ae37-39552707b5b6",
-				"layer": "Entities",
-				"x": 752,
-				"y": 16,
-				"width": 16,
-				"height": 16,
-				"color": 12470831,
-				"customFields": {
-					"hp": 2,
-					"sprite": null,
-					"aabb": null,
-					"Tile": null
-				}
 			}
 		]
 	}
